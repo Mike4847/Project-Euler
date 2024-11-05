@@ -4,10 +4,11 @@ int main()
 {
   // call the num to words
   // declare a variable that can hld string
-  char *res[200 + 1] = NULL;
-  numToWords(145, &res);
+  char *res = (char *)malloc(sizeof(char) * 200);
+  numToWords(145, res);
 
-  int cnt = countWords(res);
+  int cnt;
+  cnt = countWords(res);
 
   // print cnt number
   printf("%i", cnt);
@@ -18,6 +19,8 @@ int main()
   // {
 
   // }
+  // free the memory
+  free(res);
 
   return (0);
 }

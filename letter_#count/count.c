@@ -8,7 +8,7 @@
 
 void numToWords(int A, char *result)
 { // converting a number into its word equivalent.
-  char *units = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+  char *units[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
   char *teens[] = {"", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
   char *tens[] = {"", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
@@ -25,7 +25,7 @@ void numToWords(int A, char *result)
 
   if (A == 0)
   { // when the value is 0
-    strcpy(result, 'zero');
+    strcpy(result, "zero");
   }
   else
   { // we need a way of handling teens and logically start from the largest 'number group' to the minute one.
@@ -59,18 +59,17 @@ void numToWords(int A, char *result)
       strcpy(result, teens[unit]);
     }
   }
-  return result;
 }
 
 // func to count the number of words in a Numbers wording.
 int countWords(char *number)
 {
   int count = 0;
-  size_t size = sizeof(number);
+  size_t size = strlen(number);
   // loop through the string and count characters
   for (int i = 0; i < size; i++)
   {
-    if (number[i] != ('-' || ' '))
+    if (number[i] != '-' && number[i] != ' ')
     {
       count++;
     }
