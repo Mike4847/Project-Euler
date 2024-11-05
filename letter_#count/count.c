@@ -15,7 +15,7 @@ int main()
   // call the num to words
   // declare a variable that can hld string
   char *res = (char *)malloc(sizeof(char) * 200);
-  numToWords(145, res);
+  numToWords(10, res);
 
   int cnt;
   cnt = countWords(res);
@@ -36,56 +36,88 @@ int main()
 }
 
 void numToWords(int A, char *result)
-{ // converting a number into its word equivalent.
+{
   char *units[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
   char *teens[] = {"", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-  char *tens[] = {"", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-
+  char *tens[] = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
   char *scale[] = {"", "thousand", "million", "billion"};
-  int ten, hundred, thousand, unit;
+  int ten, hundred, thousand, million, billion, unit;
 
-  // check if the memory allocation was sucessfull
-  // after which the program will exit
   if (result == NULL)
   {
     printf("Memory allocation failed");
     exit(-1);
   }
 
-  if (A == 0)
-  { // when the value is 0
-    strcat(result, "zero");
+  if (A < 0)
+  {
+    strcpy(result, "Negative ");
+    A = -A;
   }
   else
-  { // we need a way of handling teens and logically start from the largest 'number group' to the minute one.
+  {
+    *result = '\0';
+  }
 
-    thousand = (A / 1000) % 10;
-    if (thousand > 0)
-    {
-      strcat(result, units[thousand]);
-      strcat(result, "thousand");
-    }
+  if (A == 0)
+  {
+    strcat(result, "zero");
+    return;
+  }
 
-    hundred = (A / 100) % 10;
-    if (hundred > 0)
-    {
-      strcat(result, units[hundred]);
-      strcat(result, "hundred");
-    }
+  billion = (A / 1000000000) % 1000;
+  if (billion > 0)
+  {
+    numToWords(billion, result);
+    strcat(result, " billion");
+  }
 
-    strcat(result, "and");
+  million = (A / 1000000) % 1000;
+  if (million > 0)
+  {
+    numToWords(million, result);
+    strcat(result, " million");
+  }
 
-    ten = (A / 10) % 10;
-    // TODO (micky)
-    unit = A % 10;
+  thousand = (A / 1000) % 1000;
+  if (thousand > 0)
+  {
+    numToWords(thousand, result);
+    strcat(result, " thousand");
+  }
+
+  hundred = (A / 100) % 10;
+  if (hundred > 0)
+  {
+    strcat(result, units[hundred]);
+    strcat(result, " hundred");
+  }
+
+  if (hundred > 0 || thousand > 0 || million > 0 || billion > 0)
+  {
+    strcat(result, " and ");
+  }
+
+  ten = (A / 10) % 10;
+  unit = A % 10;
+
+  if (ten == 1 && unit != 0)
+  {
+    strcat(result, teens[unit]);
+  }
+  else
+  {
     if (ten > 0)
     {
       strcat(result, tens[ten]);
-      strcat(result, units[unit]);
     }
-    else if (ten == 1 && unit != 0)
+    if (unit > 0)
     {
-      strcat(result, teens[unit]);
+      if (ten > 0)
+      {
+        strcat(result, "-");
+      }
+      strcat(result, units[unit]);
     }
   }
 }
