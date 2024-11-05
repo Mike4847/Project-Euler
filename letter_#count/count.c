@@ -17,8 +17,14 @@ int main()
   char *res = (char *)malloc(sizeof(char) * 200);
   numToWords(10, res);
 
+  int cntFinal = 0;
   int cnt;
-  cnt = countWords(res);
+
+  for (size_t i = 0; i < 1000; i++)
+  {
+    cnt = countWords(res);
+    cntFinal += cnt;
+  }
 
   // print cnt number
   printf("%i", cnt);
