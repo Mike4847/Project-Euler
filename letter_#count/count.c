@@ -54,7 +54,7 @@ void numToWords(int A, char *result)
 
   if (A == 0)
   { // when the value is 0
-    strcpy(result, "zero");
+    strcat(result, "zero");
   }
   else
   { // we need a way of handling teens and logically start from the largest 'number group' to the minute one.
@@ -62,30 +62,30 @@ void numToWords(int A, char *result)
     thousand = (A / 1000) % 10;
     if (thousand > 0)
     {
-      strcpy(result, units[thousand]);
-      strcpy(result, "thousand");
+      strcat(result, units[thousand]);
+      strcat(result, "thousand");
     }
 
     hundred = (A / 100) % 10;
     if (hundred > 0)
     {
-      strcpy(result, units[hundred]);
-      strcpy(result, "hundred");
+      strcat(result, units[hundred]);
+      strcat(result, "hundred");
     }
 
-    strcpy(result, "and");
+    strcat(result, "and");
 
     ten = (A / 10) % 10;
     // TODO (micky)
     unit = A % 10;
     if (ten > 0)
     {
-      strcpy(result, tens[ten]);
-      strcpy(result, units[unit]);
+      strcat(result, tens[ten]);
+      strcat(result, units[unit]);
     }
     else if (ten == 1 && unit != 0)
     {
-      strcpy(result, teens[unit]);
+      strcat(result, teens[unit]);
     }
   }
 }
