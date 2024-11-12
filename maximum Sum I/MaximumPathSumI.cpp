@@ -26,30 +26,42 @@ int main()
   }
 
   static int index = 0;
-  //Sum for the maximumpath
+  // Sum for the maximumpath
   std::vector<int> Maxpath;
-  
+  int Maxnum;
 
-  while(std::getline(in,line)){
+  // previous index
+
+  while (std::getline(in, line))
+  {
 
     std::istringstream row(line);
     std::vector<int> Row;
 
-    
-
-
     int number;
-    while(row >> number){
+    while (row >> number)
+    {
       Row.push_back(number);
     }
-
-    // manipulate the number of the ith row.
-    
-
-
-
-
+    if (Row[index] > Row[index + 1])
+    {
+      Maxnum = Row[index];
+    }
+    else
+    {
+      Maxnum = Row[index + 1];
+    }
+    index++;
+    Maxpath.push_back(Maxnum);
   }
+
+  std::cout << "The maximum sum of the path is:\n";
+  int sum = 0;
+  for (int n : Maxpath)
+  {
+    sum += n;
+  }
+  std::cout << sum << std::endl;
 
   return EXIT_SUCCESS;
 }
