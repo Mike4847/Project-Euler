@@ -43,14 +43,19 @@ int main()
     {
       Row.push_back(number);
     }
-    if (Row[index] > Row[index + 1])
+    //
+    for (int i = 0; i < Row.size(); i++)
     {
-      Maxnum = Row[index];
+      if (Row[index] > Row[index + 1])
+      {
+        Maxnum = Row[index];
+      }
+      else
+      {
+        Maxnum = Row[index + 1];
+      }
     }
-    else
-    {
-      Maxnum = Row[index + 1];
-    }
+
     index++;
     Maxpath.push_back(Maxnum);
   }
