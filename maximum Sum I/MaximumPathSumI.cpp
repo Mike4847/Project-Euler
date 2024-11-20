@@ -8,7 +8,10 @@
 /*
  Idea is getting each line from the file
  Data is in triangular matrix.
- will be a resultvector for storing the maximum path(were using greedy algorithm)
+ The data will be written into vector of vectors
+ We are gonna utilise dynamic programming
+ break the problem into chunks of "overlaps"
+
  I need to track index of previous line
  get the max of the adjacent +1 or -1
 */
@@ -25,48 +28,23 @@ int main()
     std::cerr << "OOOOpss File Could not Open.\n Exiting ...\n";
   }
 
-  static int index = 0;
-  // Sum for the maximumpath
-  std::vector<int> Maxpath;
-  int Maxnum;
-
-  // previous index
-
+  std::vector<std::vector<int>> Triangular2D;
   while (std::getline(in, line))
   {
 
     std::istringstream row(line);
-    std::vector<int> Row;
 
     int number;
+    // read into a vector then reading the whole line into the matrix
+    std::vector<int> temp;
+    temp.clear();
     while (row >> number)
     {
-      Row.push_back(number);
-    }
-    //
-    for (int i = 0; i < Row.size(); i++)
-    {
-      if (Row[index] > Row[index + 1])
-      {
-        Maxnum = Row[index];
-      }
-      else
-      {
-        Maxnum = Row[index + 1];
-      }
-    }
 
-    index++;
-    Maxpath.push_back(Maxnum);
+      temp.push_back(number);
+    }
+    Triangular2D.push_back(temp);
   }
-
-  std::cout << "The maximum sum of the path is:\n";
-  int sum = 0;
-  for (int n : Maxpath)
-  {
-    sum += n;
-  }
-  std::cout << sum << std::endl;
 
   return EXIT_SUCCESS;
 }
