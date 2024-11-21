@@ -34,17 +34,66 @@ int main()
 
     std::istringstream row(line);
 
+    // debug line read
+    std::cout << line << std::endl;
+
     int number;
     // read into a vector then reading the whole line into the matrix
     std::vector<int> temp;
-    temp.clear();
+
     while (row >> number)
     {
 
       temp.push_back(number);
     }
+
     Triangular2D.push_back(temp);
+    temp.clear();
   }
+  // check if the matrix is empty
+  if (Triangular2D.empty())
+  {
+    std::cout << " Data read was not successful...\n exiting...\n";
+    return 1;
+  }
+
+  // Debug: print the entire matrix
+  std::cout << "Matrix read:\n";
+  for (const auto &row : Triangular2D)
+  {
+    for (int num : row)
+    {
+      std::cout << num << " ";
+    }
+    std::cout << std::endl;
+  }
+
+  // LOOP through the arrayfrom the second-row to the top and add the number plus the maximu of the two adjacent elements before
+  for (int i = Triangular2D.size() - 2; i >= 0; i--)
+  {
+    for (size_t j = 0; j < Triangular2D[i].size(); j++)
+    {
+      Triangular2D[i][j] += std::max(Triangular2D[i + 1][j], Triangular2D[i + 1][j + 1]);
+    }
+  }
+
+  // Debug: print the entire matrix
+  std::cout << "Matrix read:\n";
+  for (const auto &row : Triangular2D)
+  {
+    for (int num : row)
+    {
+      std::cout << num << " ";
+    }
+    std::cout << std::endl;
+  }
+
+  // In principle after iteration to the last row, from the bottom second-row the top element
+  // the top element will be the maximum path from the root to the base
+  // Find maximum in the last row
+  
+
+  std::cout << "Maximum Path Sum: " << Triangular2D[0][0]<< std::endl;
 
   return EXIT_SUCCESS;
 }
