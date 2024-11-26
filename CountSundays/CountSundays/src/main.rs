@@ -1,5 +1,6 @@
 
-// In this program the idea is calculating the number of 
+// In this program the idea is calculating the number of sundays that have been the 1st of a month 
+// over a centuary 1901 - 2000
 use std::vec;
 
 fn main() {
