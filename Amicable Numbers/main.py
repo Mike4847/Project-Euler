@@ -20,7 +20,7 @@ def main():
   #initialize a dictionary 
   AmicableNumbers ={}
   # loop from 1 to 1000 to populate the keyvalue pair.
-  for i in range(1,1000):
+  for i in range(1,10000):
     AmicableNumbers[i] = Amicable(i)
     # print(f"{i} : {Amicable(i)}")
 
@@ -34,13 +34,13 @@ def main():
     
   
   # #check if numbers are amicable
-  # for j in range(1, 1000):
+  # for j in range(1, 10000):
   #   b = Amicable(j)
   #   if b in AmicableNumbers and AmicableNumbers[b] == j and j != b:
   #       result.update([j, b])
-  for j in range(1, 1000):
+  for j in range(1, 10000):
     b = Amicable(j)
-    print(f"j: {j}, b: {b}, AmicableNumbers[b]: {AmicableNumbers.get(b)}")
+    # print(f"j: {j}, b: {b}, AmicableNumbers[b]: {AmicableNumbers.get(b)}")
     if b in AmicableNumbers and AmicableNumbers[b] == j and j != b:
         result.update([j, b])
   
