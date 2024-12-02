@@ -15,6 +15,7 @@ _19_
   over a centuary 1901 - 2000. The idea is youre given starting date of jan 1st 1900 to be a monday.
   1900 being not a leap year 365 days to 1st jan 1901 which was a tuesday"
 
- ## [Factorial Digit Sum](https://projecteuler.net/problem=20)
- _20_
+ ## [Factorial Digit Sum](https://github.com/Mike4847/Project-Euler/tree/main/FactorialSum)
+ [_20_](https://projecteuler.net/problem=20)
  > "Given a digit return the sum of the digits of the factorial.The idea for solving using elementary digit multiplication "
+ The 
