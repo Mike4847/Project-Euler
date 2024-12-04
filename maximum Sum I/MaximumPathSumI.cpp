@@ -58,7 +58,7 @@ int main()
   }
 
   // Debug: print the entire matrix
-  std::cout << "Matrix read:\n";
+  std::cout << "Matrix before reads :\n";
   for (const auto &row : Triangular2D)
   {
     for (int num : row)
@@ -78,7 +78,7 @@ int main()
   }
 
   // Debug: print the entire matrix
-  std::cout << "Matrix read:\n";
+  std::cout << "Matrix after reads:\n";
   for (const auto &row : Triangular2D)
   {
     for (int num : row)
