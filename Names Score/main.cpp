@@ -15,11 +15,13 @@
 // Read the entire file into a string and separatey read the delimetered names into a vector
 std::vector<std::string> readNames(const std::string &filename)
 {
+
+  std::vector<std::string> names(5000);
   try
     {
       // checking if the machine has enough memory for holding 5000 names
-      std::vector<std::string> names(5000);
-
+      
+      names.reserve(5000);
       std::fstream file(filename);
 
       if (file.is_open())
@@ -53,11 +55,25 @@ std::vector<std::string> readNames(const std::string &filename)
               << e.what() << '\n';
   }
 
+  return names;
   
 }
 
 int main()
 {
+
+
+
+  // file name(names.txt)
+  const char* FILENAME = "names.txt";
+
+  std::vector <int> names =readNames(FILENAME);
+
+  // Print the names of the  vector.
+
+  
+
+
 
   std::cout << "Done";
   return EXIT_SUCCESS;
