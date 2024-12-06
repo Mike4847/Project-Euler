@@ -70,10 +70,9 @@ int main()
   std::vector<std::string> names =readNames(FILENAME);
 
   // Print the names of the  vector.
-
-
-
-
+  for (auto const name: names){
+    std::cout << name << std::endl;
+  }
 
   std::cout << "Done";
   return EXIT_SUCCESS;
