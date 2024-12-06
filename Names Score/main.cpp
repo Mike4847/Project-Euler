@@ -65,13 +65,13 @@ int main()
 
 
   // file name(names.txt)
-  const char* FILENAME = "names.txt";
+  const std::string FILENAME = "names.txt";
 
-  std::vector <int> names =readNames(FILENAME);
+  std::vector<std::string> names =readNames(FILENAME);
 
   // Print the names of the  vector.
 
-  
+
 
 
 
