@@ -16,7 +16,7 @@
 // create a fucntion that will sort the elements in the vector inplace
 std::vector<std::string> readNames(const std::string &filename);
 
-void lexiSort(std::vector<std::string> &names);
+void mergeSort(std::vector<std::string> &names);
 
 int main()
 {
@@ -97,7 +97,12 @@ std::vector<std::string> readNames(const std::string &filename)
 }
 
 
-void lexiSort(std::vector<std::string> &names){
-  size_t vecSize = names.size();
+// void lexiSort(std::vector<std::string> &names){
+//   size_t vecSize = names.size();
+
+// }
+// sorting using mergesort
+
+void mergeSort(std::vector<std::string> &names){
 
 }
