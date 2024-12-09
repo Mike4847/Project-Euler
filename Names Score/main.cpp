@@ -20,6 +20,8 @@ std::vector<std::string> readNames(const std::string &filename);
 
 void mergeSort(std::vector<std::string> &names, int left, int  right);
 
+void merge(std::vector<std::string> &names, int left, int midde,int  right);
+
 
 int main()
 {
@@ -109,3 +111,5 @@ std::vector<std::string> readNames(const std::string &filename)
 void mergeSort(std::vector<std::string> &names,int left, int right){
 
 }
+
+void merge(std::vector<std::string> &names, int left, int midde,int  right);
