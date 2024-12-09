@@ -14,9 +14,12 @@
 
 // Read the entire file into a string and separatey read the delimetered names into a vector
 // create a fucntion that will sort the elements in the vector inplace
+// merge function which uses a very naive and clean approach
+//when merging "two sorted halves into a single sorted auxillary storage sequence before copying back to the original."
 std::vector<std::string> readNames(const std::string &filename);
 
-void mergeSort(std::vector<std::string> &names);
+void mergeSort(std::vector<std::string> &names, int left, int  right);
+
 
 int main()
 {
@@ -103,6 +106,6 @@ std::vector<std::string> readNames(const std::string &filename)
 // }
 // sorting using mergesort
 
-void mergeSort(std::vector<std::string> &names){
+void mergeSort(std::vector<std::string> &names,int left, int right){
 
 }
