@@ -11,6 +11,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <algorithm>
 
 // Read the entire file into a string and separatey read the delimetered names into a vector
 // create a fucntion that will sort the elements in the vector inplace
@@ -20,7 +21,7 @@ std::vector<std::string> readNames(const std::string &filename);
 
 void mergeSort(std::vector<std::string> &names, int left, int  right);
 
-void merge(std::vector<std::string> &names, int left, int midde,int  right);
+void merge(std::vector<std::string> &names, int left, int middle,int  right);
 
 
 int main()
@@ -30,25 +31,38 @@ int main()
 
   // file name(names.txt)
   const std::string FILENAME = "names.txt";
-
   std::vector<std::string> names = readNames(FILENAME);
 
+
+  // printing the elements before sorting
+  std::cout << "Before sorting:\n\n";
+  std::cout << "The length of the vector is\n" << names.size() <<std::endl;
+  std::cout << "Firstname:\t"<<names.at(0) << "\nLastElement:\t" <<names.at(names.size()-1);
+  // for(const auto name:names)
+  // {
+  //   std::cout << name << std::endl;
+  // }
+
   //(NOTE): sort the elements in vector(names) the order should be lexiographically
+  mergeSort(names, 0 , names.size()-1);
+
+
+  // After sorting 
+  // printing the elements After sorting
+  std::cout << "\nAfter sorting:\n\n";
+  std::cout << "The length of the vector is\n" << names.size() <<std::endl;
+  std::cout << "Firstname:\t"<<names.at(0) << "\nLastElement:\t" <<names.at(names.size()-1);
+  // for(const auto name:names)
+  // {
+  //   std::cout << name << std::endl;
+  // }
 
 
 
   // std::cout << names[0] << std::endl;
-  std::cout << "The length of the vector is\n" << names.size() <<std::endl;
-  // Print the names of the  vector.
-  // for (auto const name: names){
-  //   std::cout << name << std::endl;
-  // }
+  // std::cout << "The length of the vector is\n" << names.size() <<std::endl;
+  // std::cout << "Firstname:\t"<<names.at(0) << "\nLastElement:\t" <<names.at(names.size()-1);
 
-  // printitn gthe first and last element 
-
-  std::cout << "Firstname:\t"<<names.at(0) << "\nLastElement:\t" <<names.at(names.size()-1);
-
-  // std::cout << "Done";
   return EXIT_SUCCESS;
 }
 
@@ -108,8 +122,48 @@ std::vector<std::string> readNames(const std::string &filename)
 // }
 // sorting using mergesort
 
-void mergeSort(std::vector<std::string> &names,int left, int right){
-
+void mergeSort(std::vector<std::string> &names,int left, int right)
+{
+  if (left >= right)
+  {
+    return ;
+  }
+  int middle = (left + right)/2;
+  mergeSort(names, left, middle);
+  mergeSort(names, middle+ 1, right);
+  merge(names,left, middle, right);
 }
 
-void merge(std::vector<std::string> &names, int left, int midde,int  right);
+void merge(std::vector<std::string> &names, int left, int middle,int  right)
+{// auxillary storage
+
+  std::vector<std::string > auxilaryVector;
+  int j , i, k;
+  k = left;
+  j = middle + 1;
+  while(k<=middle && j <= right)
+  {
+    if (names[k] < names[j])
+    {
+      auxilaryVector.push_back(names[k]);
+      k++;
+    }else {
+      auxilaryVector.push_back(names[j]);
+      j++;
+    }
+  }
+  while(k<=middle)
+  {
+    auxilaryVector.push_back(names[k]);
+    k++;
+  }
+
+  while(j<=right)
+  {
+    auxilaryVector.push_back(names[j]);
+    j++;
+  }
+
+  std::copy(auxilaryVector.begin(), auxilaryVector.end(),names.begin() + left);
+
+}
