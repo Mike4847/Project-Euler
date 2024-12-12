@@ -58,24 +58,26 @@ int main()
   std::cout << "\nAfter sorting:\n\n";
   std::cout << "The length of the vector is\n"
             << names.size() << std::endl;
-  std::cout << "Firstname:\t" << names.at(0) << "\nLastElement:\t"
+  std::cout << "COLLINS:\t" << names.at(938) << "OR" << names.at(937) << "\nLastElement:\t"
             << names.at(names.size() - 1) << std::endl;
-  std::cout << "\nSumOfAscci is\t" << indexAndSumOfNames[names.size() - 1] << std::endl;
+
+  // std::cout << "\nSumOfAscci is\t" << indexAndSumOfNames[937] << std::endl;
   // for(const auto name:names)
   // {
   //   std::cout << name << std::endl;
   // }
 
   // lets try printning the index
-  for (const auto &pair : indexAndSumOfNames)
-  {
-    std::cout << pair.first << ": " << pair.second << std::endl;
-  }
+  // for (const auto &pair : indexAndSumOfNames)
+  // {
+  //   std::cout << pair.first << ": " << pair.second << std::endl;
+  // }
 
+  // std::cout << " Size of the name list is:" << names.size() << std::endl;
   // std::cout << names[0] << std::endl;
   // std::cout << "The length of the vector is\n" << names.size() <<std::endl;
   // std::cout << "Firstname:\t"<<names.at(0) << "\nLastElement:\t" <<names.at(names.size()-1);
-
+  std::cout << " Total NameScore:= " << nameScore(indexAndSumOfNames) << std::endl;
   return EXIT_SUCCESS;
 }
 
@@ -104,7 +106,7 @@ std::vector<std::string> readNames(const std::string &filename)
       std::string name;
       while (std::getline(ss, name, ','))
       {
-        names.push_back(name);
+        names.push_back(name.substr(1, name.size() - 2));
       }
     }
     else
@@ -194,10 +196,10 @@ std::map<int, int> asciiSumOfNames(std::vector<std::string> &names)
     std::string name;
     name = *it;
 
-    for (size_t i = 0; i < it->length(); i++)
+    for (size_t i = 0; i < name.length(); i++)
     {
 
-      SumOfAscii += (name[i] - 'A' + 1);
+      SumOfAscii += ((name[i] - 'A') + 1);
     }
     // index of the name in the names vector container
     int index = std::distance(names.begin(), it);
@@ -209,13 +211,13 @@ std::map<int, int> asciiSumOfNames(std::vector<std::string> &names)
 
 size_t nameScore(const std::map<int, int> &indexAndSumOfAscii)
 {
-  size_t score = 1;
+  size_t score;
   std::vector<size_t> _sum;
 
   for (const auto &pair : indexAndSumOfAscii)
   {
-
-    score *= (pair.first * pair.second);
+    score = 0 ;
+    score += ((pair.first + 1) * pair.second);
     _sum.push_back(score);
   }
 
