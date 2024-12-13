@@ -18,4 +18,9 @@ Reference of questions name and what it entail in algorithmic jargoon .
  ## [Factorial Digit Sum](https://github.com/Mike4847/Project-Euler/tree/main/FactorialSum)
  [_20_](https://projecteuler.net/problem=20)
  > "Given a digit return the sum of the digits of the factorial.The idea for solving using elementary digit multiplication "
- The 
+ 
+ ## [Name Score](https://github.com/Mike4847/Project-Euler/tree/main/Names%20Score)
+ [_21_](https://projecteuler.net/problem=22)
+ > "The idea is sorting the names strings alphabetically(lexiographically),
+ of course this brings the question which sorting algorithm is effecient. 
+ We consider those algorithm that are stable and stability is achieved when equal keys/entries maintain their "original" Order"
