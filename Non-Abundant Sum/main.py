@@ -31,6 +31,7 @@ def is_deficient(n:int):
 
 
 
+
 def abundant():
   """
   By mathematical analysis, it can be shown that all integers greater than 28123
@@ -39,7 +40,26 @@ def abundant():
   """
   return [i for i in range(1,ABUNDANT_NO_LIMIT) if is_abundant(i)]
 
+def main():
+  positive_integers = []
+  abundant_numbers = abundant()       # populates with abundant numbers
+  sum_of_abundant = []
+  for i in range(1,ABUNDANT_NO_LIMIT):
+    for number_2 in range(i):
+      if is_abundant():
+        pass
+
+
+
+
+      # if i + number_2 not in abundant_numbers:
+      #   positive_integers.append(i)
+      #   break
+  
+  print(f"\nSum of all positive integers Which cannot be \
+     written as sum of two abundant numbers.\n is {sum(positive_integers)}")
 
 #Driver Code
 if __name__ == "__main__":
-   print(abundant())
+  #  print(abundant())
+  main()
