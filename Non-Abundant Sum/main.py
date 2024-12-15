@@ -1,3 +1,10 @@
+"""
+  The problem wishes to solve sum of all pisitive integers upto some limit,
+  the catch is this numbers should not be a sum of abundant number.
+  A number is Abundant if the sum of its perfect divisor exceeds the number.
+"""
+
+
 ABUNDANT_NO_LIMIT = 28123
 
 

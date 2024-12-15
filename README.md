@@ -24,3 +24,12 @@ Reference of questions name and what it entail in algorithmic jargoon .
  > "The idea is sorting the names strings alphabetically(lexiographically),
  of course this brings the question which sorting algorithm is effecient. 
  We consider those algorithm that are stable and stability is achieved when equal keys/entries maintain their "original" Order"
+
+ ## [Non-Abundant sum](https://github.com/Mike4847/Project-Euler/tree/main/Non-Abundant%Sum)
+ 
+ >" The problem wishes to solve sum of all pisitive integers upto some limit,
+  the catch is this numbers should not be a sum of abundant number.
+  A number is Abundant if the sum of its perfect divisor exceeds the number."
+
+For more check out the following link
+[_22_](https://projecteuler.net/problem=23)
