@@ -48,4 +48,4 @@ For more check out the following link
 
 ## [Lexiographic Permutation](https://github.com/Mike4847/Project-Euler/tree/main/Lexiographic%Permutation)
 [_23_]
->""
+>"In order to solve for lexicographic [permutation](https://en.wikipedia.org/wiki/Permutation), we need to use a system called factoridic number system *_a mixed radix numeral system that uses factorials as place values for digits_*"
