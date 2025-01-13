@@ -19,6 +19,8 @@ int main()
   double nThFibonacci(int n);
   size_t numOfDigits(double fibonacci);
 
+  std::cout << "The Fibonacci 0f 20 is" << nThFibonacci(20) << std::endl;
+
   return 0;
 }
 
@@ -31,7 +33,7 @@ nThFibonacci(int n)
   */
   // double fibonacci = (pow((1 + sqrt(5)), n) - pow((1 + sqrt(5)), n)) / (pow(2, n) * sqrt(5));
 
-  return (pow((1 + sqrt(5)), n) - pow((1 + sqrt(5)), n)) / (pow(2, n) * sqrt(5));
+  return (std::pow((1 + std::sqrt(5)), n) - std::pow((1 + std::sqrt(5)), n)) / (std::pow(2, n) * std::sqrt(5));
 }
 
 size_t
