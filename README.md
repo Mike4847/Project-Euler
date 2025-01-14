@@ -48,4 +48,13 @@ For more check out the following link
 
 ## [Lexiographic Permutation](https://github.com/Mike4847/Project-Euler/tree/main/Lexiographic%Permutation)
 [_23_]
->"In order to solve for lexicographic [permutation](https://en.wikipedia.org/wiki/Permutation), we need to use a system called factoridic number system *_a mixed radix numeral system that uses factorials as place values for digits_*"
+>"In order to solve for lexicographic [permutation](https://en.wikipedia.org/wiki/Permutation), we need to use a system called factoridic number system *_a mixed radix numeral system that uses factorials as place values for digits_*.
+"
+For more check out the following link
+(https://projecteuler.net/problem=24)
+## [1000 digit Fibonacci term](https://github.com/Mike4847/Project-Euler/tree/main/1000-digit)
+[_24_]
+>"By The use of the closed-form Binets formula for calculating the n-th fibonacci. We could easily calculate the number of digits of any number by the use of floor(log_10) + 1.
+Note however their is need of USING algorithmic approach like matrix exponentiaion to calculate the n-th fibonacci number."
+For more check out the following link
+(https://projecteuler.net/problem=25)
