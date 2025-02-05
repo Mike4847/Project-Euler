@@ -17,14 +17,40 @@ bool isCancellingFraction(int num, int denom);
 void remove_char(char *str, char ch);
 
 int main() {
-    int n = isCancellingFraction(49, 98);
+    int *numerator  = (int *)malloc(4 * sizeof(int));
+    int *denominator  = (int *)malloc(4 * sizeof(int));
+    int currentNumerator = 0;
+    int currentDenominator  = 0 ;
 
-    if (n) {
+        
+    int i , j;
+    for (i = 10 ; i < LIMIT ; i++ ){
+        for (j = i + 1 ; j < LIMIT ; j++ ){
+            if(isCancellingFraction(i,j))
+            {
+                numerator[currentNumerator] = i ;
+                denominator[currentDenominator] = j ;
+                currentNumerator++;
+                currentDenominator++;
+
+            } 
+        }
+    }
+    //TODO:
+    //DELETE
+    //
+    /*if (n) {
         printf("true\n");
     } else {
         printf("false\n");
-    }
 
+    }*/
+
+    int productOfNumerators = 1,productOfDenominators = 1 ;
+
+    for (i=0)
+    free(numerator);
+    free(denominator);
     return EXIT_SUCCESS;
 }
 
