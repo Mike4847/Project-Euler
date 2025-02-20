@@ -24,7 +24,7 @@ int main()
   // For position 10, we want index 11
   // For position 100, we want index 101
   // and so on...
-  for (int i = 1; i <= 10000; i *= 10)
+  for (int i = 1; i <= 1000000; i *= 10)
   {
     int index = i + 1; // +1 because we're skipping the "0."
     if (index < champernownesConstant.length())
