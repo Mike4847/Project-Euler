@@ -4,31 +4,24 @@
 #include <set>
 #include <array>
 #include <numeric>
+#include <algorithm>
 
-// todo:
 bool isPanDigital(std::string number);
-bool isSubstrDivisible(std::string number);
+bool isSubstrDivisible(const std::string &number);
 void generatePandigitals(std::string current, std::vector<bool> &used,
                          std::vector<long long> &results, int position);
+std::vector<long long> findSubstringDivisiblePandigitals();
 
 int main()
 {
+  std::vector<long long> answer;
+  std::vector<bool> used(10, false); // Tracks which digits we've used
 
-  const long long LIMIT = 10000000000;
-  long long number;
+  // Use the backtracking approach instead
+  generatePandigitals("", used, answer, 0);
 
-  std::vector<int> answer;
-
-  for (number = 1000000000; number < LIMIT; number++)
-  {
-    if (isPanDigital(std::to_string(number)) && isSubstrDivisible(std::to_string(number)))
-    {
-      answer.push_back(number);
-    }
-  }
-
-  std::cout << "The sum of all 0 -9 pandigital numbers that are substring divisible is"
-            << std::accumulate(answer.begin(), answer.end(), 0) << std::endl;
+  std::cout << "The sum of all 0-9 pandigital numbers that are substring divisible is "
+            << std::accumulate(answer.begin(), answer.end(), 0LL) << std::endl;
 
   return EXIT_SUCCESS;
 }
@@ -60,15 +53,14 @@ bool isPanDigital(std::string num)
   return num.size() == number.size();
 }
 
-bool isSubstrDivisible(std::string number)
+bool isSubstrDivisible(const std::string &number)
 {
-  std::string num(number);
-  int i, j;
   std::array<int, 7> divisors = {2, 3, 5, 7, 11, 13, 17};
-  for (i = 1, j = 0; i < num.size() - 2 && j < divisors.size(); i++, j++)
+
+  for (int i = 0; i < 7; i++)
   {
-    std::string div = std::string(1, num[i]) + std::string(1, num[i + 1]) + std::string(1, num[i + 2]);
-    if (std::stoi(div) % divisors[j] != 0)
+    int val = (number[i + 1] - '0') * 100 + (number[i + 2] - '0') * 10 + (number[i + 3] - '0');
+    if (val % divisors[i] != 0)
     {
       return false;
     }
@@ -160,4 +152,25 @@ void generatePandigitals(std::string current, std::vector<bool> &used,
       used[i] = false;
     }
   }
+}
+
+std::vector<long long> findSubstringDivisiblePandigitals()
+{
+  std::vector<long long> result;
+  std::string digits = "0123456789";
+
+  // Skip permutations starting with 0
+  do
+  {
+    // Skip if starts with 0
+    if (digits[0] == '0')
+      continue;
+
+    if (isSubstrDivisible(digits))
+    {
+      result.push_back(std::stoll(digits));
+    }
+  } while (std::next_permutation(digits.begin(), digits.end()));
+
+  return result;
 }
