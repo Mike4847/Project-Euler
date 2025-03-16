@@ -9,6 +9,10 @@
 // the idea is using Sieve or Eratosthenes
 
 
+
+//TODO:
+int *prime_factorization(int number);
+
 //TODO:
 //calculate list of primes upto a number
 
@@ -74,24 +78,7 @@ int *sieve_of_eratosthenes(int number , int *count){
 int main(){
 
 
-  int count = 0;
-  int number = 1000000;
-  int *primes = sieve_of_eratosthenes( number, &count);
-
-
-  printf("The number of primes upto %d is %d\n", number, count);
-  printf("List of primes upto %i are:\n", number);
-
-  for (int i=0 ; i < count ; i++ )
-  {
-   printf("%d", primes[i]);
-
-    if(i < count - 1)
-    {
-      printf(", ");
-    }
-
-  }
+ 
 
   printf("\n");
 
@@ -99,3 +86,16 @@ int main(){
 
   return(0);
 }
+
+
+int *prime_factorization(int number)
+{
+  int count = 0;
+  int *prime =sieve_of_eratosthenes( number, &count);
+ 
+  
+}
+
+
+
+
