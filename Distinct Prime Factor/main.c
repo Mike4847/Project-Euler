@@ -20,7 +20,8 @@ int *sieve_of_eratosthenes(int number , int *count){
 
   /*
    * The idea is calculating prime upto a number
-   *
+   * for the sieve of erastosthene we need a boolean array upto number.
+   *  
    * */
   bool *is_prime = (bool *)malloc((number + 1) * sizeof(bool));
 
@@ -82,7 +83,7 @@ int main(){
 
   printf("\n");
 
-  free(primes);
+  
 
   return(0);
 }
@@ -90,6 +91,7 @@ int main(){
 
 int *prime_factorization(int number)
 {
+  if (number <= 2) return NULL;
   int count = 0;
   int *prime =sieve_of_eratosthenes( number, &count);
  
