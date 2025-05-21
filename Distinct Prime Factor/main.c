@@ -9,8 +9,10 @@ void sieve_of_eratosthenes(int number , int *count, int **primes);
 
 void sieve_of_eratosthenes(int number , int *count, int **primes) {
   /*
+
    * The idea is calculating prime numbers up to a number
    */
+
   bool *is_prime = (bool *)malloc((number + 1) * sizeof(bool));
   if (!is_prime) {
     *count = 0;
@@ -22,7 +24,6 @@ void sieve_of_eratosthenes(int number , int *count, int **primes) {
   for (i = 0; i <= number; i++) {  // Include number itself
     is_prime[i] = true;
   }
-
   // 0 and 1 aren't primes 
   is_prime[0] = is_prime[1] = false;
 
@@ -79,7 +80,9 @@ int main(){
   }
 
   printf("\n");
+
   return 0;
+
 }
 
 
