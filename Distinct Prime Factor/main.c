@@ -3,98 +3,85 @@
 #include <stdlib.h>
 
 
-
-//TODO:
-//calculate prime factorization of a number
-// the idea is using Sieve or Eratosthenes
-
-
-
 //TODO:
 int *prime_factorization(int number);
+void sieve_of_eratosthenes(int number , int *count, int **primes);
 
-//TODO:
-//calculate list of primes upto a number
-
-int *sieve_of_eratosthenes(int number , int *count){
-
+void sieve_of_eratosthenes(int number , int *count, int **primes) {
   /*
-   * The idea is calculating prime upto a number
-   *
-   * */
+   * The idea is calculating prime numbers up to a number
+   */
   bool *is_prime = (bool *)malloc((number + 1) * sizeof(bool));
+  if (!is_prime) {
+    *count = 0;
+    *primes = NULL;
+    return;
+  }
 
-  int i ;
-
-  for (i = 0 ; i <= number ; i++)
-  {
+  int i;
+  for (i = 0; i <= number; i++) {  // Include number itself
     is_prime[i] = true;
   }
 
-  // 0 and 1 arent primes 
+  // 0 and 1 aren't primes 
   is_prime[0] = is_prime[1] = false;
 
-  for(int p =2 ; p * p <= number ; p++)
-  {
-    if(is_prime[p])
-    {
+  for (int p = 2; p * p <= number; p++) {  // Use <= for boundary case
+    if (is_prime[p]) {
       // remove all multiples of p
-      for ( i = p * p  ; i <=number ; i += p )
-      {
+      for (i = p * p; i <= number; i += p) {  // Include number itself
         is_prime[i] = false;
-
       }
-
     }
-
   }
 
-  *count = 0 ;
-  for(i =0 ; i <= number ; i++)
-  {
-    if(is_prime[i]) (*count)++;
-
+  // Count primes
+  *count = 0;
+  for (i = 0; i <= number; i++) {
+    if (is_prime[i]) (*count)++;
   }
 
-  // create an array of primes
-  int *primes = (int *)malloc((*count) * sizeof(int));
-  int index = 0 ;
-  for (i = 2 ; i <= number ; i++)
-  {
-    if(is_prime[i])
-    {
-      primes[index++] = i ;
+  // Create an array of primes
+  *primes = (int *)malloc((*count) * sizeof(int));
+  if (!*primes) {
+    *count = 0;
+    free(is_prime);
+    return;
+  }
+
+  int index = 0;
+  for (i = 2; i <= number; i++) {
+    if (is_prime[i]) {
+      (*primes)[index++] = i;
     }
   }
 
   free(is_prime);
-  return primes;
-
-
 }
 
 
 
 int main(){
 
+  // finding all primes below 1000
+  int count;
+  int *primeArr = NULL;
+  
+  sieve_of_eratosthenes(1000, &count, &primeArr);
 
- 
+  printf("Count of primes below 1000: %d\n", count);  // No & here
+  
+  if (primeArr) {
+    for (int i = 0; i < count; i++) {
+      printf("%d\t", primeArr[i]);
+    }
+    free(primeArr);  // Free the allocated memory
+  }
 
   printf("\n");
-
-  free(primes);
-
-  return(0);
+  return 0;
 }
 
-
-int *prime_factorization(int number)
-{
-  int count = 0;
-  int *prime =sieve_of_eratosthenes( number, &count);
- 
-  
-}
 
 
 

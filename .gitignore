@@ -1,6 +1,5 @@
 CountSundays/CountSundays/target/** 
-"maximum Sum I"/*.exe
+**/*.exe
 
 "Names Score"/.vscode/
 .vscode/
-"Names Score"/*.exe
