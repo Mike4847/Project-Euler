@@ -1,5 +1,11 @@
 CountSundays/CountSundays/target/** 
 **/*.exe
+<<<<<<< HEAD
+
+"Names Score"/.vscode/
+.vscode/
+=======
 
 **/.vscode
 
+>>>>>>> a6df1525aeb52c174e12bae8a282ec62c714e2f9
